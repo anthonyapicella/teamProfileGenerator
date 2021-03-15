@@ -19,5 +19,8 @@
   "homepage": "https://github.com/anthonyapicella/teamProfileGenerator#readme",
   "devDependencies": {
     "jest": "^26.6.3"
+  },
+  "dependencies": {
+    "inquire": "^0.4.8"
   }
 }
