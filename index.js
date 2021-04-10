@@ -64,21 +64,53 @@ function addManager() {
 				name: 'name',
 				type: 'input',
 				message: 'What is your managers name?',
-			},
+                validate:  input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log('--- NOT A VALID INPUT... TRY AGAIN ---')
+                        return false;
+                    }
+			    }
+            },
 			{
 				name: 'id',
 				type: 'input',
 				message: "Enter Manager's Employee ID number",
+                validate:  input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log('--- NOT A VALID INPUT... TRY AGAIN ---')
+                        return false;
+                    }
+			    }
 			},
 			{
 				name: 'email',
 				type: 'input',
 				message: "Enter Manager's email address",
+                validate:  input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log('--- NOT A VALID INPUT... TRY AGAIN ---')
+                        return false;
+                    }
+			    }
 			},
 			{
 				name: 'officeNumber',
 				type: 'input',
 				message: "Enter Manager's office number",
+                validate:  input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log('--- NOT A VALID INPUT... TRY AGAIN ---')
+                        return false;
+                    }
+			    }
 			},
 			{
 				name: 'nextEmp',
@@ -112,21 +144,53 @@ function addEngineer() {
 				name: 'name',
 				type: 'input',
 				message: "What is your Engineer's name?",
+                validate:  input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log('--- NOT A VALID INPUT... TRY AGAIN ---')
+                        return false;
+                    }
+			    }
 			},
 			{
 				name: 'id',
 				type: 'input',
 				message: "Enter Engineer's Employee ID number",
+                validate:  input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log('--- NOT A VALID INPUT... TRY AGAIN ---')
+                        return false;
+                    }
+			    }
 			},
 			{
 				name: 'email',
 				type: 'input',
 				message: "Enter Engineer's email address",
+                validate:  input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log('--- NOT A VALID INPUT... TRY AGAIN ---')
+                        return false;
+                    }
+			    }
 			},
 			{
 				name: 'gitHub',
 				type: 'input',
 				message: "Enter Engineer's GitHub username",
+                validate:  input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log('--- NOT A VALID INPUT... TRY AGAIN ---')
+                        return false;
+                    }
+			    }
 			},
 			{
 				name: 'nextEmp',
@@ -160,21 +224,53 @@ function addIntern() {
 				name: 'name',
 				type: 'input',
 				message: "What is your Intern's name?",
+                validate:  input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log('--- NOT A VALID INPUT... TRY AGAIN ---')
+                        return false;
+                    }
+			    }
 			},
 			{
 				name: 'id',
 				type: 'input',
 				message: "Enter Intern's Employee ID number",
+                validate:  input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log('--- NOT A VALID INPUT... TRY AGAIN ---')
+                        return false;
+                    }
+			    }
 			},
 			{
 				name: 'email',
 				type: 'input',
 				message: "Enter Intern's email address",
+                validate:  input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log('--- NOT A VALID INPUT... TRY AGAIN ---')
+                        return false;
+                    }
+			    }
 			},
 			{
 				name: 'school',
 				type: 'input',
 				message: "Enter Intern's School",
+                validate:  input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log('--- NOT A VALID INPUT... TRY AGAIN ---')
+                        return false;
+                    }
+			    }
 			},
 			{
 				name: 'nextEmp',
