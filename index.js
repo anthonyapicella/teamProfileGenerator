@@ -8,9 +8,26 @@ const Intern = require('./lib/Intern');
 
 const employees = [];
 
-function buildTeam() {
-	newMember();
-	//memberPage();
+// const generateHTML = () =>
+// ``;
+
+function startApp() {
+	inquirer
+		.prompt([
+			{
+				name: 'startApp',
+				type: 'confirm',
+				message: 'Would you like to assemble a team?',
+			},
+		])
+		.then((res, err) => {
+			if (err) console.error(err);
+			if (res.startApp) {
+				newMember();
+			} else {
+				process.exit();
+			}
+		});
 }
 
 function newMember() {
@@ -131,7 +148,7 @@ function addEngineer() {
 			if (res.nextEmp) {
 				newMember();
 			} else {
-				// return template function
+                // return template function
 			}
 		});
 }
@@ -175,8 +192,12 @@ function addIntern() {
 			);
 			employees.push(newIntern);
 			console.log(employees);
-
+			if (res.nextEmp) {
+				newMember();
+			} else {
+				// return template function
+			}
 		});
 }
 
-buildTeam();
+startApp();
