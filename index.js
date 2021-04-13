@@ -1,15 +1,16 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+// require classes
 const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
+// declare empty array for employee objects
 const employees = [];
 
 // prompts user to start putting team together or exit app
-
 function startApp() {
 	inquirer
 		.prompt([
@@ -29,8 +30,8 @@ function startApp() {
 		});
 }
 
-// first add info for manager
-
+// first add info for manager 
+// add validation (for every prompt)
 function addManager() {
 	inquirer
 		.prompt([
@@ -92,6 +93,7 @@ function addManager() {
 				message: 'Would you like to add another employee?',
 			},
 		])
+		// capture responses and create new manager
 		.then((res, err) => {
 			if (err) console.error(err);
 			const newManager = new Manager(
@@ -100,6 +102,7 @@ function addManager() {
 				res.email,
 				res.officeNumber
 			);
+			// push new manager to employees array
 			employees.push(newManager);
 
 			if (res.nextEmp) {
@@ -111,6 +114,8 @@ function addManager() {
 		});
 }
 
+// if user chooses to add new member, prompt will provide choices for Engineer, Intern or "finish"
+// If user opts to finish -> render existing team
 function newMember() {
 	inquirer
 		.prompt([
@@ -136,6 +141,7 @@ function newMember() {
 		});
 }
 
+// the following will collect data for Engineer
 function addEngineer() {
 	inquirer
 		.prompt([
@@ -214,6 +220,7 @@ function addEngineer() {
 		});
 }
 
+// the following will collect data for Intern
 function addIntern() {
 	inquirer
 		.prompt([
@@ -293,6 +300,8 @@ function addIntern() {
 		});
 }
 
+// create function to render team to HTML page using cards and template literals
+// will loop through array of objects to render each employee to their own card
 function renderTeam() {
 	const htmlPageContent = [];
 	const htmlPageHead = `
@@ -315,45 +324,45 @@ function renderTeam() {
       <div class="container">
         <div class="jumbotron text-center">
           <div class="container">
-            <h1 class="display-4">Our Team</h1>
-            <h2 class="lead">Role call!</h2>
+            <h1 class="display-2">Our Team</h1>
+            <h2>"Role call!"</h2>
           </div>
         </div>
       </div>
     
       <div class="container">
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-          <div class="row">`;
+        <div class="row p-4 justify-content-center">
+          <div class="row p-3 d-flex justify-content-between">`;
 
 	htmlPageContent.push(htmlPageHead);
 
 	for (let i = 0; i < employees.length; i++) {
 		let card = `
-					<div class="card" style="width: 18rem">
+					<div class="card" style="width: 19rem">
 					<div class="card-body">
 				  	<h3 class="card-title">${employees[i].name}</h3>
 				  	<h5 class="card-subtitle">${employees[i].role}</h5>
 				  	<ul class="list-group list-group-flush">
 					<li class="list-group-item">
-					  Employee ID: ${employees[i].id}
+						<strong>ID:</strong> ${employees[i].id}
 					</li>
 					<li class="list-group-item">
-						Email: <a href="mailto:${employees[i].email}">${employees[i].email}</a>
+						<strong>Email:</strong> <a href="mailto:${employees[i].email}">${employees[i].email}</a>
 					</li>`;
 		if (employees[i].officeNumber) {
 			card += `
 					<li class="list-group-item">
-						Office Number: ${employees[i].officeNumber}
+						<strong>Office Number: </strong>${employees[i].officeNumber}
 					</li>`;
 		}if (employees[i].gitHub) {
 			card += `
 					<li class="list-group-item">
-						GitHub: <a href="https://github.com/${employees[i].gitHub}">${employees[i].gitHub}</a>
+					<strong>GitHub:</strong> <a href="https://github.com/${employees[i].gitHub}">${employees[i].gitHub}</a>
 					</li>`;
 		}if (employees[i].school) {
 			card += `
 					<li class="list-group-item">
-						School: ${employees[i].school}
+						<strong>School:</strong> ${employees[i].school}
 					</li>`;
 		}
 		card += `
@@ -364,6 +373,7 @@ function renderTeam() {
 		htmlPageContent.push(card);
 	}
 
+	
 	const htmlFoot = `
 					</div >
 					</div >
@@ -382,4 +392,5 @@ function renderTeam() {
 	);
 }
 
+// start application
 startApp();

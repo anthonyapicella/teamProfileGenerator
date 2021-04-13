@@ -1,0 +1,19 @@
+body {
+    background-color: darkslategrey;
+
+}
+
+h1,h2 {
+    color: whitesmoke;
+    filter: drop-shadow(4px 4px 4px black);
+}
+
+
+.card {
+    background-color: whitesmoke;
+    filter: drop-shadow(4px 4px 4px black);
+}
+
+ul {
+    padding-top: 1rem;
+}
