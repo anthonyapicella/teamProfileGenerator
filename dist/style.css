@@ -12,6 +12,7 @@ h1,h2 {
 .card {
     background-color: whitesmoke;
     filter: drop-shadow(4px 4px 4px black);
+    margin-top: 25px;
 }
 
 ul {

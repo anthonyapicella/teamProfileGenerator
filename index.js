@@ -306,85 +306,89 @@ function renderTeam() {
 	const htmlPageContent = [];
 	const htmlPageHead = `
 	<!DOCTYPE html>
-    <html lang="en">
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="./style.css" />
+		<title>Team</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="jumbotron text-center">
+				<div class="container">
+					<h1 class="display-2">Our Team</h1>
+					<h2>"Role call!"</h2>
+				</div>
+			</div>
+		</div>
     
-    <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-        crossorigin="anonymous" />
-      <link rel="stylesheet" href="./style.css" />
-      <title>Team</title>
-    </head>
-    
-    <body>
-      <div class="container">
-        <div class="jumbotron text-center">
-          <div class="container">
-            <h1 class="display-2">Our Team</h1>
-            <h2>"Role call!"</h2>
-          </div>
-        </div>
-      </div>
-    
-      <div class="container">
-        <div class="row p-4 justify-content-center">
-          <div class="row p-3 d-flex justify-content-between">`;
+		<div class="container">
+			<div class="row p-4 justify-content-center">
+				<div class="row p-3 d-flex justify-content-between">`
 
 	htmlPageContent.push(htmlPageHead);
 
 	for (let i = 0; i < employees.length; i++) {
 		let card = `
 					<div class="card" style="width: 19rem">
-					<div class="card-body">
-				  	<h3 class="card-title">${employees[i].name}</h3>
-				  	<h5 class="card-subtitle">${employees[i].role}</h5>
-				  	<ul class="list-group list-group-flush">
-					<li class="list-group-item">
-						<strong>ID:</strong> ${employees[i].id}
-					</li>
-					<li class="list-group-item">
-						<strong>Email:</strong> <a href="mailto:${employees[i].email}">${employees[i].email}</a>
-					</li>`;
-		if (employees[i].officeNumber) {
+						<div class="card-body">
+							<h3 class="card-title">${employees[i].name}</h3>
+							<h5 class="card-subtitle">${employees[i].role}</h5>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item">
+									<strong>ID:</strong> ${employees[i].id}
+								</li>
+								<li class="list-group-item">
+									<strong>Email:</strong>
+								<a href="mailto:${employees[i].email}"
+									>${employees[i].email}</a
+									>
+								</li>`;
+			if (employees[i].officeNumber) {
+				card += `
+								<li class="list-group-item">
+									<strong>Office Number: </strong>${employees[i].officeNumber}
+								</li>`;
+			}if (employees[i].gitHub) {
+				card += `
+								<li class="list-group-item">
+									<strong>GitHub:</strong> <a href="https://github.com/${employees[i].gitHub}">${employees[i].gitHub}</a>
+								</li>`;
+			}if (employees[i].school) {
 			card += `
-					<li class="list-group-item">
-						<strong>Office Number: </strong>${employees[i].officeNumber}
-					</li>`;
-		}if (employees[i].gitHub) {
+								<li class="list-group-item">
+									<strong>School:</strong> ${employees[i].school}
+								</li>`;
+			}
 			card += `
-					<li class="list-group-item">
-					<strong>GitHub:</strong> <a href="https://github.com/${employees[i].gitHub}">${employees[i].gitHub}</a>
-					</li>`;
-		}if (employees[i].school) {
-			card += `
-					<li class="list-group-item">
-						<strong>School:</strong> ${employees[i].school}
-					</li>`;
-		}
-		card += `
-				</ul>			
-				</div>
-				</div>`;
+							</ul>			
+						</div>
+					</div>`;
 
 		htmlPageContent.push(card);
 	}
 
 	
 	const htmlFoot = `
-					</div >
-					</div >
-  					</div >
+				</div >
+			</div >
+  		</div >
 	  
-					<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/	bootstrap.bundle.min.js"
-        			integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-        			crossorigin="anonymous"></script>
-    			</body>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/	bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    </body>
     
-			</html>`;
+</html>`;
 	htmlPageContent.push(htmlFoot);
 
 	fs.writeFile('dist/index.html', htmlPageContent.join(''), (err) =>
